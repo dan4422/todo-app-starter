@@ -15,16 +15,17 @@ for (let i=0;i < todoItems.length; i++) {
     const checkbox = document.createElement('input')
     checkbox.classList.add('form-check-input')
     checkbox.type = 'checkbox'
-    if (todoItems[i]["completed"] == false) {
-        items.innerText = todoItems[i]["title"]
-        incompleteList.appendChild(items)
-        checkbox.id = 'flexCheckDefault'
-        items.appendChild(checkbox)
-    } else {
-        items.innerText = todoItems[i]["title"]
+    items.appendChild(checkbox)
+    const label = document.createElement('label')
+    label.innerText = todoItems[i]["title"]
+    label.classList.add('form-check-label', 'ps-3')
+    items.appendChild(label)
+    if (todoItems[i]["completed"]) {
         completeList.appendChild(items)
         checkbox.id = 'flexCheckChecked'
         checkbox.setAttribute('checked','')
-        items.appendChild(checkbox)
+    } else {
+        incompleteList.appendChild(items)
+        checkbox.id = 'flexCheckDefault'
     }
 }
